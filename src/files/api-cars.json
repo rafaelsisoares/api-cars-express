@@ -23,6 +23,10 @@
     {
       "id": 6,
       "name": "Renault"
+    },
+    {
+      "id": 7,
+      "name": "Toyota"
     }
   ],
   "fuels": [
@@ -86,6 +90,60 @@
       "id": 6,
       "name": "Clio",
       "brandId": 6,
+      "fuelId": 3
+    },
+    {
+      "id": 7,
+      "name": "Bolt",
+      "brandId": 2,
+      "fuelId": 5
+    },
+    {
+      "id": 8,
+      "name": "Megane",
+      "brandId": 6,
+      "fuelId": 1
+    },
+    {
+      "id": 9,
+      "name": "147",
+      "brandId": 3,
+      "fuelId": 2
+    },
+    {
+      "id": 10,
+      "name": "Bolt",
+      "brandId": 2,
+      "fuelId": 5
+    },
+    {
+      "id": 11,
+      "name": "Senna",
+      "brandId": 5,
+      "fuelId": 1
+    },
+    {
+      "id": 12,
+      "name": "Carrera",
+      "brandId": 4,
+      "fuelId": 1
+    },
+    {
+      "id": 13,
+      "name": "S10",
+      "brandId": 2,
+      "fuelId": 6
+    },
+    {
+      "id": 14,
+      "name": "Etios",
+      "brandId": 7,
+      "fuelId": 3
+    },
+    {
+      "id": 15,
+      "name": "Corolla",
+      "brandId": 7,
       "fuelId": 3
     }
   ]
