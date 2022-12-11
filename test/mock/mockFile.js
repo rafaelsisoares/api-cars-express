@@ -112,9 +112,9 @@ const mockFile = {
       },
       {
         id: 10,
-        name: 'Bolt',
-        brandId: 2,
-        fuelId: 5,
+        name: 'Jetta',
+        brandId: 1,
+        fuelId: 3,
       },
       {
         id: 11,

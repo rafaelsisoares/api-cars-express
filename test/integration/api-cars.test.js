@@ -46,4 +46,23 @@ describe('Testando a API', function () {
         expect(response.body).to.deep.equal({ error: 'Car not found' });
     });
   });
+  describe('Usando o método GET em /cars/brands/:id', function () {
+    it('Retorna os carros da marca com o id 4', async function () {
+        const expectedResponse = [
+            { id: 1, name: 'Spin', brandId: 2, fuelId: 1 },
+            { id: 7, name: 'Bolt', brandId: 2, fuelId: 5 },
+            { id: 13, name: 'S10', brandId: 2, fuelId: 6 },
+          ];
+        const response = await chai.request(app).get('/cars/brands/4');
+
+        expect(response).to.have.status(200);
+        expect(response.body).to.deep.equal(expectedResponse);
+    });
+    it('Retorna uma lista vazia se for passado um id inválido', async function () {
+        const response = await chai.request(app).get('/cars/brands/100');
+
+        expect(response).to.have.status(404);
+        expect(response.body).to.deep.equal([]);
+    });
+  });
 });
