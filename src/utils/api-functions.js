@@ -18,6 +18,13 @@ const getAllCars = async () => {
     return response.cars;
 };
 
+const getCarById = async (id) => {
+    const cars = await getAllCars();
+    const targetCar = cars.find((car) => car.id === id);
+    return targetCar;
+};
+
 module.exports = {
     getAllCars,
+    getCarById,
 };
