@@ -23,7 +23,7 @@ describe('Testando a API', function () {
             const response = await chai.request(app).get('/cars');
 
             expect(response).to.have.status(200);
-            expect(response.body).to.deep.equal(mockFile);
+            expect(response.body).to.deep.equal(mockFile.cars);
         });
     });
 });
