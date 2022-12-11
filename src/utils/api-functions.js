@@ -24,7 +24,13 @@ const getCarById = async (id) => {
     return targetCar;
 };
 
+const getCarsByBrand = async (id) => {
+    const cars = await getAllCars();
+    return cars.filter(({ brandId }) => brandId === id);
+};
+
 module.exports = {
     getAllCars,
     getCarById,
+    getCarsByBrand,
 };

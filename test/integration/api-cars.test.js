@@ -49,9 +49,8 @@ describe('Testando a API', function () {
   describe('Usando o método GET em /cars/brands/:id', function () {
     it('Retorna os carros da marca com o id 4', async function () {
         const expectedResponse = [
-            { id: 1, name: 'Spin', brandId: 2, fuelId: 1 },
-            { id: 7, name: 'Bolt', brandId: 2, fuelId: 5 },
-            { id: 13, name: 'S10', brandId: 2, fuelId: 6 },
+            { id: 2, name: 'Taycan', brandId: 4, fuelId: 5 },
+            { id: 12, name: 'Carrera', brandId: 4, fuelId: 1 },
           ];
         const response = await chai.request(app).get('/cars/brands/4');
 
