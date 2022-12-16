@@ -12,9 +12,11 @@ const reader = async () => {
     }
 };
 
-const writer = async (content) => {
+const writer = async (content, type) => {
     try {
-        await fs.writeFile(completePath, JSON.stringify(content, null, 2), 'utf-8');
+        const api = await reader();
+        const newData = { ...api, [type]: content };
+        await fs.writeFile(completePath, JSON.stringify(newData, null, 2), 'utf-8');
     } catch (e) {
         console.error(`Erro: ${e.message}`);
     }
@@ -44,7 +46,7 @@ const postNewCar = async (newCar) => {
         ...newCar,
     };
     cars.push(newData);
-    await writer(cars);
+    await writer(cars, 'cars');
 };
 
 module.exports = {
