@@ -2,6 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 const fs = require('fs');
+const { join } = require('path');
 const mockFile = require('../mock/mockFile');
 const app = require('../../src/app');
 
@@ -9,15 +10,23 @@ const { expect } = chai;
 
 chai.use(chaiHttp);
 
+const API_CARS_PATH = join(__dirname, '../../src/files/api-cars.json');
+const API_CARS_BACKUP_PATH = join(__dirname, '../../src/files/backup/api-cars-bk.json');
+
 describe('Testando a API', function () {
   beforeEach(function () {
     sinon.stub(fs, 'readFile').resolves(mockFile);
     sinon.stub(fs, 'writeFile').resolves();
+    const restoreBk = fs.readFileSync(API_CARS_BACKUP_PATH, 'utf8');
+    fs.writeFileSync(API_CARS_PATH, restoreBk, 'utf8');
   });
 
   afterEach(function () {
+    const restoreBk = fs.readFileSync(API_CARS_BACKUP_PATH, 'utf8');
+    fs.writeFileSync(API_CARS_BACKUP_PATH, restoreBk, 'utf8');
     sinon.restore();
   });
+
   describe('Usando o método GET em /cars', function () {
     it('Retorna todos os carros', async function () {
       const response = await chai.request(app).get('/cars');
