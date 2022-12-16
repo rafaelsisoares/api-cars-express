@@ -27,6 +27,11 @@ const getAllCars = async () => {
     return response.cars;
 };
 
+const getAllBrands = async () => {
+    const response = await reader();
+    return response.brands;
+};
+
 const getCarById = async (id) => {
     const cars = await getAllCars();
     const targetCar = cars.find((car) => car.id === id);
@@ -49,9 +54,21 @@ const postNewCar = async (newCar) => {
     await writer(cars, 'cars');
 };
 
+const postNewBrand = async (newBrand) => {
+    const brands = await getAllBrands();
+    const id = brands.at(-1).id + 1;
+    const newData = {
+        id,
+        ...newBrand,
+    };
+    brands.push(newData);
+    await writer(brands, 'brands');
+};
+
 module.exports = {
     getAllCars,
     getCarById,
     getCarsByBrand,
     postNewCar,
+    postNewBrand,
 };
