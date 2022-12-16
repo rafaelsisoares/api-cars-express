@@ -59,7 +59,7 @@ const postNewBrand = async (newBrand) => {
     const id = brands.at(-1).id + 1;
     const newData = {
         id,
-        ...newBrand,
+        name: newBrand,
     };
     brands.push(newData);
     await writer(brands, 'brands');
