@@ -64,4 +64,18 @@ describe('Testando a API', function () {
         expect(response.body).to.deep.equal([]);
     });
   });
+
+  describe('Usando o método POST em /cars', function () {
+    it('Cadastra um novo carro', async function () {
+      const input = {
+        name: 'Fox',
+        brandId: 1,
+        fuelId: 3,
+      };
+      const response = await chai.request(app).post('/cars').send(input);
+
+      expect(response).to.have.status(201);
+      expect(response.body).to.deep.equal(input);
+    });
+  });
 });
