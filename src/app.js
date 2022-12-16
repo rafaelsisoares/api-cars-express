@@ -1,7 +1,9 @@
 const express = require('express');
-const { getAllCars, getCarById, getCarsByBrand } = require('./utils/api-functions');
+const { getAllCars, getCarById, getCarsByBrand, postNewCar } = require('./utils/api-functions');
 
 const app = express();
+
+app.use(express.json());
 
 app.get('/cars', async (_req, res) => {
     const cars = await getAllCars();
@@ -19,6 +21,12 @@ app.get('/cars/brands/:id', async (req, res) => {
     const { id } = req.params;
     const cars = await getCarsByBrand(+id);
     res.status(cars.length === 0 ? 404 : 200).json(cars);
+});
+
+app.post('/cars', async (req, res) => {
+    const { name, brandId, fuelId } = req.body;
+    await postNewCar({ name, brandId, fuelId });
+    res.status(201).json({ name, brandId, fuelId });
 });
 
 module.exports = app;
