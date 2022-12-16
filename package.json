@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
+    "restore": "cp ./src/files/backup/api-cars-bk.json ./src/files/api-cars.json",
     "test": "mocha test/**/*.test.js --exit"
   },
   "repository": {
