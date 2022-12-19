@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  node:
+    image: node:16
+    container_name: api_cars
+    tty: true
+    stdin_open: true
+    command: bash
+    restart: always
+    ports:
+      - 3001:3001
+    working_dir: /api
+    volumes:
+      - ./:/api
+    
+networks:
+  default:
+    name: api-cars-net

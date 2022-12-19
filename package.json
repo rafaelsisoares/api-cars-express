@@ -2,9 +2,12 @@
   "name": "api-cars-express",
   "version": "1.0.0",
   "description": "API de carros",
-  "main": "index.js",
+  "main": "./src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "nodemon .",
+    "restore": "cp ./src/files/backup/api-cars-bk.json ./src/files/api-cars.json",
+    "test": "mocha test/**/*.test.js --exit"
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,9 @@
   },
   "homepage": "https://github.com/rafaelsisoares/api-cars-express#readme",
   "dependencies": {
-    "express": "4.17"
+    "express": "4.17",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "chai": "4.3",
